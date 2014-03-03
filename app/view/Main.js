@@ -4,7 +4,7 @@ Ext.define('HclExtLib.view.Main', {
         'Ext.tab.Panel',
         'Ext.layout.container.Border',
 		'HclExtLib.view.CustomPagerBarGrid',
-        'HclExtLib.view.sgrid'
+        'HclExtLib.view.SimpleEditableGrid'
     ],
     
     xtype: 'app-main',
@@ -77,8 +77,71 @@ Ext.define('HclExtLib.view.Main', {
             title: 'Grid with Custom Paging Bar'
         },
 		{
-            xtype:'sgrid',
-            title: 'Simple Grid with component columns '
+            xtype:'simple-editable-grid',
+            title: 'Simple Grid with component columns ',
+            config:{
+        		store: {
+                    fields: ['sex', 'name', 'status',{name: 'datejoined',type:'date'},'enabled'],
+
+                    data: [
+                        {sex: 'male', name: 'Vishal', status: 'Available', datejoined:'01/01/2014', enabled: true},
+                         {sex: 'male', name: 'Santosh', status: 'Available',datejoined:'01/10/2014', enabled: true},
+        				 {sex: 'male', name: 'Suresh', status: 'Busy', datejoined:'01/10/2014',enabled: false},
+        				 {sex: 'male', name: 'Harry', status: 'Busy', datejoined:'01/13/2014',enabled: true},
+        				 {sex: 'male', name: 'Octo', status: 'Offline', datejoined:'01/05/2014',enabled: true}
+        					
+                    ]
+                },
+        		columnsconfig:	[
+        		                    {
+        								columnconfig:{
+        									text     : 'Name',
+        									dataIndex: 'name',
+        								},
+        		                            xtype: 'textfield',
+        		                        	disabled:false,
+        				                    allowBlank: false
+        		                    }, {
+        		                    	columnconfig:{
+        		                    		text     : 'Status',
+        			                        dataIndex: 'status',
+        			                        width:150
+        								},
+        		                        store: ['Available', 'Away', 'Busy', 'Offline'],
+        		                        forceSelection: true,
+        		                        xtype: 'combobox',
+        		                        allowBlank: false		                        
+        		                    }, 
+        							{
+        		                    	columnconfig:{
+        		                    		text:'Date Joined',
+        			                        dataIndex: 'datejoined',
+        			                        width:200
+        								},
+        		                        xtype: 'datefield',
+        		                        allowBlank: false		                      
+        		                    },{
+        		                    	columnconfig:{
+        			                        dataIndex: 'enabled',
+        			                        width:25
+        								},
+        		                        xtype: 'checkbox',
+        		                        allowBlank: false		                       
+        		                    }
+        		                ]
+        	},
+            dockedItems: [{
+                xtype: 'toolbar',
+                dock: 'bottom',
+                items: [
+                    { 
+                    	xtype: 'button', 
+                    	text: 'Save' ,
+                    	handler: function (button){
+                    	console.log('Modified Records: '+button.up('simple-editable-grid').getModifiedRecords());
+                    }}
+                ]
+            }]
         }
 		]
     }]
