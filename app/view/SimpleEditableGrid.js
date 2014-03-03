@@ -99,31 +99,7 @@ Ext.define('HclExtLib.view.SimpleEditableGrid', {
 					}
     			});
     			break;
-    		default:
-    			Ext.apply(col,{
-                    xtype: 'componentcolumn',
-                    renderer: function(name, meta, record) {
-                        return {
-                            value: coldef.dataIndex,
-                            xtype: 'textfield',
-							disabled:coldef.disabled,
-                            listeners: {
-                                inputEl: {
-                                    keydown: function(ev) {
-                                        // Prevent the event propagating as far as the grid, otherwise
-                                        // navigation keys won't function correctly in the textfield
-                                        ev.stopPropagation();
-                                    }
-                                }
-                            },
-                            editor: {
-								xtype: 'textfield',
-								allowBlank: coldef.allowBlank
-							}
-                        };
-                    },
-    			});
-    		  
+    		default:   			
     		}
     		columns.push(col);
     	});
