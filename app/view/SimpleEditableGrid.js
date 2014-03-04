@@ -99,7 +99,16 @@ Ext.define('HclExtLib.view.SimpleEditableGrid', {
 					}
     			});
     			break;
-    		default:   			
+    		case 'image': 
+    			Ext.apply(col,{
+                    xtype: 'actioncolumn',
+                    items: [{
+                        icon: coldef.imagesrc,  // Use a URL in the icon config
+                        tooltip: coldef.tooltip
+                    }]
+    			});
+    		 break;
+    		default:
     		}
     		columns.push(col);
     	});

@@ -84,7 +84,7 @@ Ext.define('HclExtLib.view.Main', {
                     fields: ['sex', 'name', 'status',{name: 'datejoined',type:'date'},'enabled'],
 
                     data: [
-                        {sex: 'male', name: 'Vishal', status: 'Available', datejoined:'01/01/2014', enabled: true},
+                        {sex: 'male',  name: 'Vishal', status: 'Available', datejoined:'01/01/2014', enabled: true},
                          {sex: 'male', name: 'Santosh', status: 'Available',datejoined:'01/10/2014', enabled: true},
         				 {sex: 'male', name: 'Suresh', status: 'Busy', datejoined:'01/10/2014',enabled: false},
         				 {sex: 'male', name: 'Harry', status: 'Busy', datejoined:'01/13/2014',enabled: true},
@@ -92,7 +92,14 @@ Ext.define('HclExtLib.view.Main', {
         					
                     ]
                 },
-        		columnsconfig:	[
+        		columnsconfig:	[	{
+										columnconfig:{
+											 width:20
+										},
+					                        xtype: 'image',
+					                        imagesrc:'resources/img/delete.png',
+					                        tooltip:'Delete'
+					                },
         		                    {
         								columnconfig:{
         									text     : 'Name',
