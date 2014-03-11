@@ -4,7 +4,8 @@ Ext.define('HclExtLib.view.Main', {
         'Ext.tab.Panel',
         'Ext.layout.container.Border',
 		'HclExtLib.view.CustomPagerBarGrid',
-        'HclExtLib.view.SimpleEditableGrid'
+        'HclExtLib.view.SimpleEditableGrid',
+        'HclExtLib.view.HButtonBar'
     ],
     
     xtype: 'app-main',
@@ -138,16 +139,25 @@ Ext.define('HclExtLib.view.Main', {
         		                ]
         	},
             dockedItems: [{
-                xtype: 'toolbar',
-                dock: 'bottom',
+                xtype: 'HButtonBar',
+                config:{
                 items: [
                     { 
                     	xtype: 'button', 
                     	text: 'Save' ,
                     	handler: function (button){
                     	console.log('Modified Records: '+button.up('simple-editable-grid').getModifiedRecords());
-                    }}
+                    }},
+                    { 
+                    	xtype: 'button', 
+                    	text: 'Add'
+                    },
+                    { 
+                    	xtype: 'button', 
+                    	text: 'Delete'
+                    }
                 ]
+               }
             }]
         }
 		]
