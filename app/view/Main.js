@@ -5,7 +5,8 @@ Ext.define('HclExtLib.view.Main', {
         'Ext.layout.container.Border',
 		'HclExtLib.view.CustomPagerBarGrid',
         'HclExtLib.view.SimpleEditableGrid',
-        'HclExtLib.view.HButtonBar'
+        'HclExtLib.view.HButtonBar',
+        'HclExtLib.view.VButtonBar'
     ],
     
     xtype: 'app-main',
@@ -13,7 +14,6 @@ Ext.define('HclExtLib.view.Main', {
     layout: {
         type: 'border'
     },
-
     items: [{
         region: 'west',
         xtype: 'panel',
@@ -80,6 +80,7 @@ Ext.define('HclExtLib.view.Main', {
 		{
             xtype:'simple-editable-grid',
             title: 'Simple Grid with component columns ',
+            width: 600,
             config:{
         		store: {
                     fields: ['sex', 'name', 'status',{name: 'datejoined',type:'date'},'enabled'],
@@ -148,18 +149,44 @@ Ext.define('HclExtLib.view.Main', {
                     	handler: function (button){
                     	console.log('Modified Records: '+button.up('simple-editable-grid').getModifiedRecords());
                     }},
+                    '','','','',
                     { 
                     	xtype: 'button', 
                     	text: 'Add'
                     },
+                    '','','','',
                     { 
                     	xtype: 'button', 
                     	text: 'Delete'
                     }
                 ]
                }
+            },
+            {
+                xtype: 'VButtonBar',
+                config:{
+                items: [
+                    { 
+                    	xtype: 'button', 
+                    	text: 'Add Item' ,
+                    	handler: function (button){
+                    	alert('Add Clicked');
+                    }},
+                    '','','','',
+                    { 
+                    	xtype: 'button', 
+                    	text: 'Edit Item'
+                    },
+                    '','','','',
+                    { 
+                    	xtype: 'button', 
+                    	text: 'Delete Item'
+                    }
+                ]
+               }
             }]
         }
 		]
-    }]
+    },
+    ]
 });
