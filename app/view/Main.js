@@ -146,17 +146,20 @@ Ext.define('HclExtLib.view.Main', {
                     { 
                     	xtype: 'button', 
                     	text: 'Save' ,
+                    	width:200,
                     	handler: function (button){
                     	console.log('Modified Records: '+button.up('simple-editable-grid').getModifiedRecords());
                     }},
                     '','','','',
                     { 
                     	xtype: 'button', 
+                    	width:200,
                     	text: 'Add'
                     },
                     '','','','',
                     { 
                     	xtype: 'button', 
+                    	width:200,
                     	text: 'Delete'
                     }
                 ]
