@@ -6,7 +6,8 @@ Ext.define('HclExtLib.view.Main', {
 		'HclExtLib.view.CustomPagerBarGrid',
         'HclExtLib.view.SimpleEditableGrid',
         'HclExtLib.view.HButtonBar',
-        'HclExtLib.view.VButtonBar'
+        'HclExtLib.view.VButtonBar',
+        'HclExtLib.view.FromToDates'
     ],
     
     xtype: 'app-main',
@@ -188,6 +189,22 @@ Ext.define('HclExtLib.view.Main', {
                 ]
                }
             }]
+        },
+        {
+        	xtype:'form',
+        	height:400,
+        	title:'From - To Date',
+        	items:[{
+	        		xtype:'fromtodates',
+	            	config:{
+	            	    	title: 'Grant Dates',
+	            	    	fromtitle:'From',
+	            	    	totitle:'To',
+	            	    	labelWidth:40,
+	            	    	width:600
+	            	    }
+        	}]
+        	
         }
 		]
     },
